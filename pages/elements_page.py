@@ -161,8 +161,8 @@ class UserRegisterPage(BasePage):
         self.element_is_visible(self.locators.USERNAME_FIELD).send_keys("gadzhi")
         self.element_is_visible(self.locators.EMAIL_ADDRESS_FIELD).send_keys(
             "gkurban" + "+lvtest" + dt_str + "@qwerty.com")
-        self.element_is_visible(self.locators.PASSWORD_FIELD).send_keys("p@ssw0rD")
-        self.element_is_visible(self.locators.CONFIRM_PASSWORD_FIELD).send_keys("p@ssw0rD")
+        self.element_is_visible(self.locators.PASSWORD_FIELD).send_keys("pass")
+        self.element_is_visible(self.locators.CONFIRM_PASSWORD_FIELD).send_keys("pass")
         time.sleep(3)
         self.element_is_visible(self.locators.REGISTER_AGREE_CHECKBOX).click()
         time.sleep(3)
@@ -192,11 +192,6 @@ class UserRegisterPage(BasePage):
         self.element_is_visible(self.locators.HOW_HAPPIFY_WORK_SLIDE_BUTTON).click()
         self.element_is_visible(self.locators.BASIC_SKILLS_SLIDE_BUTTON).click()
         self.element_is_visible(self.locators.EMOTIONAL_WELL_BEING_SLIDE_BUTTON).click()
-
-    # def click_random_element(self):
-    #     item_list = self.elements_are_visible(self.locators.GENDER_BOX)
-    #     for item in item_list:
-    #         print(item.text)
 
 
 dat_obj = datetime.datetime.now()
