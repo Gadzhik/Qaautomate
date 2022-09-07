@@ -17,7 +17,7 @@ class TestElementsOnPage:
 
     class TestUserRegister:
         def test_user_register_assessment(self, driver):
-            user_register_assessment = UserRegisterPage(driver, os.getenv('PAGE_URL') or 'https://qa01.happify.com')
+            user_register_assessment = UserRegisterPage(driver, os.getenv('PAGE_URL') or 'https://some.site.com')
             user_register_assessment.open()
             user_register_assessment.click_started_main_page_button()
             user_register_assessment.click_started_today_button()
@@ -40,25 +40,13 @@ class TestElementsOnPage:
             user_register_assessment.create_user_account()
             user_register_assessment.privacy_settings_data()
             time.sleep(5)
-            #assert 'Happify: Science-Based Activities and Games' in driver.title
 
     class TestMainPageLoadTime:
         # TC 2104 v.9088
         def test_main_page_load_time(self, driver):
-            # page_load_time = SiteMainPageOpen(driver, 'https://qa01.happify.com')
-            # page_load_time.open()
 
-            page_load_speed = requests.get("https://stage.happify.com").elapsed.total_seconds()
+            page_load_speed = requests.get("https://qwer.ty.com").elapsed.total_seconds()
             print(page_load_speed)
-
-            load_time = 400
-            # assert if load_time <= 400:
-            #     print ('Page load fast')
-            # else:
-            #     print('Page load slow')
-
-
-# Lesson 235.2
 
 
 
