@@ -1,6 +1,9 @@
 import os
 import time
-from pages.elements_page import AdminLoginPage, UserRegisterPage
+
+import requests
+
+from pages.elements_page import AdminLoginPage, UserRegisterPage, SiteMainPageOpen
 
 
 class TestElementsOnPage:
@@ -14,12 +17,45 @@ class TestElementsOnPage:
 
     class TestUserRegister:
         def test_user_register_assessment(self, driver):
-            user_register_assessment = UserRegisterPage(driver, os.getenv('PAGE_URL') or 'https://some-page.com')
+            user_register_assessment = UserRegisterPage(driver, os.getenv('PAGE_URL') or 'https://qa01.happify.com')
             user_register_assessment.open()
-            user_register_assessment.fill_user_register_fields()
-            #time.sleep(5)
+            user_register_assessment.click_started_main_page_button()
+            user_register_assessment.click_started_today_button()
+            user_register_assessment.click_random_gender_radio_box()
+            user_register_assessment.click_age_radio_box()
+            user_register_assessment.click_race_checkbox_items()
+            user_register_assessment.click_next_button()
+            user_register_assessment.click_job_radio_box()
+            user_register_assessment.click_relationship_radio_box()
+            user_register_assessment.click_kids_check_box()
+            user_register_assessment.click_kids_next_button()
+            user_register_assessment.click_adversity_radio_box()
+            user_register_assessment.click_connected_others_radio_box()
+            user_register_assessment.click_stressful_situation_radio_box()
+            user_register_assessment.click_experience_of_moment_radio_box()
+            user_register_assessment.click_meditation_radio_box()
+            user_register_assessment.click_conditions_check_box()
+            user_register_assessment.click_conditions_next_button()
+            user_register_assessment.enter_user_register_data()
+            user_register_assessment.create_user_account()
+            user_register_assessment.privacy_settings_data()
+            time.sleep(5)
             #assert 'Happify: Science-Based Activities and Games' in driver.title
 
+    class TestMainPageLoadTime:
+        # TC 2104 v.9088
+        def test_main_page_load_time(self, driver):
+            # page_load_time = SiteMainPageOpen(driver, 'https://qa01.happify.com')
+            # page_load_time.open()
+
+            page_load_speed = requests.get("https://stage.happify.com").elapsed.total_seconds()
+            print(page_load_speed)
+
+            load_time = 400
+            # assert if load_time <= 400:
+            #     print ('Page load fast')
+            # else:
+            #     print('Page load slow')
 
 
 # Lesson 235.2
